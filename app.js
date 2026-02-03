@@ -24,11 +24,9 @@ setTimeout(() => {
 document.getElementById(‘loading-screen’).classList.add(‘hidden’);
 }, 1000);
 
-```
 // 加载统计数据
 loadStats();
 updateHomeStats();
-```
 
 });
 
@@ -36,7 +34,7 @@ updateHomeStats();
 function startMode(mode) {
 appState.currentMode = mode;
 
-```
+
 if (mode === 'practice') {
     startPracticeMode();
 } else if (mode === 'exam') {
@@ -56,10 +54,10 @@ appState.userAnswers = [];
 appState.score = 0;
 appState.startTime = Date.now();
 
-```
+
 showScreen('quiz-screen');
 showQuestion();
-```
+
 
 }
 
@@ -72,18 +70,18 @@ appState.score = 0;
 appState.timeRemaining = 45 * 60; // 45分钟
 appState.startTime = Date.now();
 
-```
+
 showScreen('quiz-screen');
 startTimer();
 showQuestion();
-```
+
 
 }
 
 function startWrongMode() {
 const wrongAnswers = getWrongAnswers();
 
-```
+
 if (wrongAnswers.length === 0) {
     alert('错题本是空的！继续努力练习吧！');
     return;
@@ -101,7 +99,7 @@ appState.startTime = Date.now();
 
 showScreen('quiz-screen');
 showQuestion();
-```
+
 
 }
 
@@ -110,7 +108,7 @@ function showQuestion() {
 const question = appState.questions[appState.currentQuestionIndex];
 if (!question) return;
 
-```
+
 // 更新进度
 document.getElementById('question-counter').textContent = 
     `${appState.currentQuestionIndex + 1}/${appState.questions.length}`;
@@ -145,7 +143,7 @@ question.options.forEach((option, index) => {
 
 // 隐藏反馈
 document.getElementById('feedback-section').classList.remove('active');
-```
+
 
 }
 
@@ -154,7 +152,7 @@ function selectAnswer(selectedIndex) {
 const question = appState.questions[appState.currentQuestionIndex];
 const isCorrect = selectedIndex === question.correct;
 
-```
+
 // 禁用所有选项
 const options = document.querySelectorAll('.option-btn');
 options.forEach((btn, index) => {
@@ -183,7 +181,7 @@ if (isCorrect) {
 
 // 显示反馈
 showFeedback(isCorrect, question);
-```
+
 
 }
 
@@ -192,7 +190,7 @@ const feedbackSection = document.getElementById(‘feedback-section’);
 const feedbackResult = document.getElementById(‘feedback-result’);
 const feedbackExplanation = document.getElementById(‘feedback-explanation’);
 
-```
+
 if (isCorrect) {
     feedbackResult.className = 'feedback-result correct';
     feedbackResult.innerHTML = '✓ 回答正确！';
@@ -207,7 +205,7 @@ feedbackExplanation.innerHTML = `
 `;
 
 feedbackSection.classList.add('active');
-```
+
 
 }
 
@@ -215,14 +213,12 @@ feedbackSection.classList.add('active');
 function nextQuestion() {
 appState.currentQuestionIndex++;
 
-```
 if (appState.currentQuestionIndex >= appState.questions.length) {
     // 测验结束
     showResults();
 } else {
     showQuestion();
 }
-```
 
 }
 
@@ -233,7 +229,6 @@ if (appState.timer) {
 clearInterval(appState.timer);
 }
 
-```
 showScreen('result-screen');
 
 const correctCount = appState.score;
@@ -274,7 +269,7 @@ setTimeout(() => {
 
 // 保存统计数据
 saveStats(correctCount, totalCount);
-```
+
 
 }
 
@@ -283,7 +278,7 @@ function startTimer() {
 const timerDisplay = document.getElementById(‘timer’);
 timerDisplay.style.display = ‘block’;
 
-```
+
 appState.timer = setInterval(() => {
     appState.timeRemaining--;
     
@@ -302,7 +297,7 @@ appState.timer = setInterval(() => {
         showResults();
     }
 }, 1000);
-```
+
 
 }
 
@@ -404,9 +399,8 @@ stats.totalCorrect += correct;
 stats.totalSessions++;
 stats.lastPlayed = Date.now();
 
-```
+
 localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(stats));
-```
 
 }
 
@@ -424,7 +418,7 @@ function updateHomeStats() {
 const stats = loadStats();
 const wrongAnswers = getWrongAnswers();
 
-```
+
 document.getElementById('total-practiced').textContent = stats.totalQuestions;
 
 const accuracy = stats.totalQuestions > 0 
@@ -444,7 +438,7 @@ if (wrongAnswers.length === 0) {
     wrongModeBtn.style.opacity = '1';
     wrongModeDesc.textContent = `${wrongAnswers.length}道错题待复习`;
 }
-```
+
 
 }
 
