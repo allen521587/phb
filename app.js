@@ -42,7 +42,6 @@ if (mode === 'practice') {
 } else if (mode === 'wrong') {
     startWrongMode();
 }
-```
 
 }
 
