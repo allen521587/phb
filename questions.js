@@ -82,7 +82,6 @@ explanation: “黄色实线禁止跨越，通常用于分隔对向车道。”,
 type: “sign”
 },
 
-```
 // 继续标志类题目
 {
     id: 11,
@@ -1953,7 +1952,6 @@ type: “sign”
     explanation: "电动轮椅应在人行道上行驶。",
     type: "pedestrian"
 }
-```
 
 ];
 
@@ -2038,7 +2036,6 @@ questions: [
 }
 ];
 
-```
 const topicIndex = i % topics.length;
 const topic = topics[topicIndex];
 
@@ -2050,7 +2047,6 @@ questionBank.push({
     explanation: '这是题目解析。',
     type: topic.type
 });
-```
 
 }
 
